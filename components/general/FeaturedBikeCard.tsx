@@ -8,9 +8,9 @@ interface FeaturedBikeCardProps {
 
 export default function FeaturedBikeCard({ discount, image }: FeaturedBikeCardProps) {
   return (
-    <View className="mb-6 w-full px-4"> {/* Added px-4 for screen padding */}
+    <View className="mb-6 w-full "> {/* Added px-4 for screen padding */}
       <ImageBackground
-        source={images.hero}
+        source={images.hero2}
         className="h-[240px] w-full rounded-3xl overflow-hidden" // Removed max-w-[350px]
         resizeMode="cover"
       >
@@ -29,7 +29,7 @@ export default function FeaturedBikeCard({ discount, image }: FeaturedBikeCardPr
           </View>
 
           {/* Discount Text - bottom left */}
-          <View className="absolute bottom-8 left-8">
+          <View className="absolute bottom-3 left-4">
             <Text
               className="text-white/60 font-poppins-bold text-[26px]"
             >
