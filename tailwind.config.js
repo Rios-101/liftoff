@@ -13,6 +13,15 @@ module.exports = {
         'poppins-bold': ['Poppins_700Bold', 'sans-serif'],
         'poppins-extrabold': ['Poppins_800ExtraBold', 'sans-serif'],
       },
+      colors: {
+        primary: {
+          bg: "#323B4F",
+          bg2: "#28303F",
+          bg3: "#262E3D",
+          active: "#4286EE",
+          100: "#3D9CEA"
+        }
+      }
     },
   },
   plugins: [],
