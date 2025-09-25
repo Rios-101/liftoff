@@ -8,14 +8,19 @@ interface FeaturedBikeCardProps {
 
 export default function FeaturedBikeCard({ discount, image }: FeaturedBikeCardProps) {
   return (
-    <View className="mb-6 w-full "> {/* Added px-4 for screen padding */}
+    <View className="mb-6 w-full ">
       <ImageBackground
-        source={images.hero2}
-        className="h-[240px] w-full rounded-3xl overflow-hidden" // Removed max-w-[350px]
+        source={images.hero}
+        className="rounded-3xl overflow-hidden"
+        style={{
+          height: 260,  // Increased height
+          width: '105%',  // Slightly wider
+          marginLeft: '-5%'  // Center the overflow
+        }}
         resizeMode="cover"
       >
         <View className="flex-1 relative">
-          {/* Bike Image - centered and larger */}
+
           <View className="flex-1 items-center justify-center">
             <Image
               source={image}
@@ -28,10 +33,10 @@ export default function FeaturedBikeCard({ discount, image }: FeaturedBikeCardPr
             />
           </View>
 
-          {/* Discount Text - bottom left */}
-          <View className="absolute bottom-3 left-4">
+
+          <View className="absolute bottom-10 left-14">
             <Text
-              className="text-white/60 font-poppins-bold text-[26px]"
+              className="text-white/60 font-poppins-bold text-[27px]"
             >
               {discount}
             </Text>

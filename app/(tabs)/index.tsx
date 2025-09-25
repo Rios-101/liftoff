@@ -3,13 +3,25 @@ import Header from "@/components/general/Header";
 import ProductGrid from "@/components/general/ProductGrid";
 import { bikeProducts, filterOptions, images } from "@/constant";
 import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
 import { ImageBackground, ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
+
+  const [filterOption, setFilterOptions] = useState(filterOptions);
+
   const handleSearch = (query: string) => {
     console.log('Search query:', query);
     // TODO: Implement search functionality
+  };
+
+  const handleFilterPress = (label: string) => {
+    const updated = filterOption.map(option => ({
+      ...option,
+      isActive: option.label === label, // only the clicked one stays active
+    }));
+    setFilterOptions(updated);
   };
 
   return (
@@ -31,10 +43,8 @@ export default function Index() {
           <FeaturedSection
             discount="30% Off"
             image={images.Bicycle}
-            filterOptions={filterOptions}
-            onFilterPress={(label) => {
-              console.log('Pressed:', label);
-            }}
+            filterOptions={filterOption}
+            onFilterPress={handleFilterPress}
           />
 
 

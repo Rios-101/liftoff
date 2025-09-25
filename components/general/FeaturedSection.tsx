@@ -23,7 +23,7 @@ export default function FeaturedSection({
   onFilterPress
 }: FeaturedSectionProps) {
   return (
-    <View className="relative pb-20 my-5">
+    <View className="relative pb-10 my-5">
       {/* Featured Bike Card */}
       <FeaturedBikeCard
         discount={discount}

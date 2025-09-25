@@ -1,5 +1,5 @@
 import GradientButton from "@/components/general/GradientButton";
-import { Image, Text, View } from "react-native";
+import { Image, Text, TouchableOpacity } from "react-native";
 
 interface FilterOption {
   label: string;
@@ -20,15 +20,25 @@ export default function FilterChip({ option, index, onPress }: FilterChipProps) 
   const verticalOffset = waveOffsets[index] || 0;
 
   return (
-    <View
-      className="flex-1 mx-1"
-      style={{ transform: [{ translateY: verticalOffset }] }}
+    <TouchableOpacity
+      onPress={() => onPress(option.label)}
+      style={{
+        width: 50,
+        height: 50,
+        marginHorizontal: 4,
+        transform: [{ translateY: verticalOffset }],
+      }}
+      activeOpacity={0.8}
     >
       <GradientButton
         isActive={option.isActive}
-        className="w-full"
-        gradientClassName="py-3 rounded-2xl h-[50px] w-[50px] items-center justify-center"
-        onPress={() => onPress(option.label)}
+        style={{
+          width: 50,
+          height: 50,
+          borderRadius: 16,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
         {option.image && (
           <Image
@@ -36,18 +46,24 @@ export default function FilterChip({ option, index, onPress }: FilterChipProps) 
             style={{
               width: 20,
               height: 20,
-              tintColor: option.isActive ? "white" : "#94a3b8"
+              tintColor: option.isActive ? "white" : "#94a3b8",
             }}
             resizeMode="contain"
           />
         )}
 
         {option.text && (
-          <Text className={`font-semibold text-center ${option.isActive ? 'text-white' : 'text-slate-300'}`}>
+          <Text
+            style={{
+              fontWeight: "600",
+              textAlign: "center",
+              color: option.isActive ? "white" : "#94a3b8",
+            }}
+          >
             {option.text}
           </Text>
         )}
       </GradientButton>
-    </View>
+    </TouchableOpacity>
   );
 }

@@ -9,6 +9,10 @@ import icon1 from "@/assets/images/icon-1.png";
 import icon2 from "@/assets/images/icon-2.png";
 import icon3 from "@/assets/images/icon-3.png";
 import iconBike from "@/assets/images/icon-bike.png";
+import menu1 from "@/assets/images/menu1.png";
+import menu2 from "@/assets/images/menu2.png";
+import menu3 from "@/assets/images/menu3.png";
+import menu4 from "@/assets/images/menu4.png";
 import nav from "@/assets/images/nav.png";
 
 export const images = {
@@ -23,7 +27,12 @@ export const images = {
     icon3,
     bg2,
     Bicycle1,
-    Bicycle2
+    Bicycle2,
+    menu1,
+    menu2,
+    menu3,
+    menu4,
+
 }
 
 

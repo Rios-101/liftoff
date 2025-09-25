@@ -15,7 +15,7 @@ interface FilterChipsProps {
 
 export default function FilterChips({ options, onFilterPress }: FilterChipsProps) {
   return (
-    <View className="mb-8 absolute bottom-1 w-full">
+    <View className=" absolute bottom-1 w-full">
       <View className="flex-row justify-between" style={{ minHeight: 80 }}>
         {options.map((option, index) => (
           <FilterChip

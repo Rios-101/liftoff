@@ -24,8 +24,14 @@ export default function CartItem({ item, onIncrement, onDecrement }: CartItemPro
         colors={['#363E51', '#4C5770']}
         start={{ x: 0.85, y: 0 }}   // approximate 322.57deg
         end={{ x: 0.15, y: 1 }}
-        style={{ borderRadius: 20 }}
-        className="w-[100px] h-[90px] rounded-3xl mr-4 items-center justify-center"
+        style={{
+          width: 100,
+          height: 90,
+          borderRadius: 20,
+          marginRight: 16,
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
         <Image
           source={item.image}

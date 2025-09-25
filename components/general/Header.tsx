@@ -45,7 +45,7 @@ export default function Header({ title, onSearch }: HeaderProps) {
   }
 
   return (
-    <View className="flex-row font-poppins-bold justify-between items-center mb-6">
+    <View className="flex-row font-poppins-bold justify-between items-center mb-2">
       <Text className="text-white text-3xl font-bold">{title}</Text>
       <GradientButton onPress={handleSearchToggle}>
         <Ionicons name="search" size={24} color="white" />

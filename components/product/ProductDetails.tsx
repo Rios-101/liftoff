@@ -1,7 +1,8 @@
 import { NeumorphicTabButton } from "@/components/product/NeumorphicTabButton";
 import { LinearGradient } from "expo-linear-gradient";
 import { useState } from "react";
-import { Dimensions, Text, TouchableOpacity, View } from "react-native";
+import { Dimensions, Text, View } from "react-native";
+import GradientButton from "../general/GradientButton";
 
 interface ProductDetailsProps {
   productName: string;
@@ -24,8 +25,8 @@ export default function ProductDetails({ productName, productPrice, onAddToCart 
         borderTopRightRadius: 30,
         paddingHorizontal: 24,
         paddingTop: 32,
-        paddingBottom: 24,
-        marginTop: -24,
+        // paddingBottom: 24,
+        marginTop: -18,
         minHeight: height - 340,
       }}
     >
@@ -69,28 +70,19 @@ export default function ProductDetails({ productName, productPrice, onAddToCart 
       <View className="flex-1" />
 
       {/* Price + Add to Cart */}
-      <View className="flex-row bg-primary-bg3 items-center justify-between p-5 -mx-5 rounded-full mt-6">
+      <View className="flex-row bg-primary-bg3 items-center justify-between px-5 py-7 -mx-5 rounded-full mt-6">
         <View>
           <Text className="text-primary-100 text-3xl font-poppins-bold">
             {productPrice}
           </Text>
         </View>
 
-        <TouchableOpacity
-          onPress={onAddToCart}
-          className="bg-blue-500 rounded-2xl px-8 py-4"
-          style={{
-            shadowColor: "#4A90E2",
-            shadowOffset: { width: 0, height: 8 },
-            shadowOpacity: 0.4,
-            shadowRadius: 12,
-            elevation: 8,
-          }}
-        >
+
+        <GradientButton width={160} height={44} onPress={onAddToCart}>
           <Text className="text-white font-poppins-semibold text-base">
             Add to Cart
           </Text>
-        </TouchableOpacity>
+        </GradientButton>
       </View>
     </LinearGradient>
   );

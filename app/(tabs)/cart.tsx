@@ -7,7 +7,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { router, useLocalSearchParams } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
-import { KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 interface CartItemType {
@@ -55,7 +55,6 @@ export default function Cart() {
 
   const handleApply = () => {
     console.log("Applying promo code:", promoCode);
-    // TODO: Add logic to validate/apply promo code
   };
 
   const handleIncrement = (id: number) => {
@@ -78,32 +77,27 @@ export default function Cart() {
 
   const handleBack = () => {
     if (fromProduct) {
-      // Navigate back to the specific product page
       const productId = Array.isArray(fromProduct) ? fromProduct[0] : fromProduct;
 
       router.push(`/product/${productId}` as any);
     } else {
-      // Default back behavior
       router.back();
     }
   };
 
   const handleCheckout = () => {
     console.log('Proceeding to checkout...');
-    // TODO: Implement checkout navigation
   };
 
-  // Calculate totals
   const subtotal = cartItems.reduce((sum, item) => sum + (item.numericPrice * item.quantity), 0);
-  const deliveryFee = 0; // Free shipping
-  const discount = subtotal * 0.3; // 30% discount
+  const deliveryFee = 0;
+  const discount = subtotal * 0.3;
   const total = subtotal - discount + deliveryFee;
 
   return (
     <SafeAreaView className="flex-1" style={{ backgroundColor: '#242C3B' }}>
       <StatusBar style="light" />
 
-      {/* Header */}
       <View className="flex-row items-center justify-between px-4 py-4">
 
         <GradientButton onPress={handleBack}>
@@ -124,7 +118,6 @@ export default function Cart() {
         keyboardVerticalOffset={Platform.OS === 'ios' ? 90 : 0}
       >
         <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
-          {/* Cart Items */}
           <View className="pb-6">
             {cartItems.map((item) => (
               <CartItem
@@ -136,14 +129,12 @@ export default function Cart() {
             ))}
           </View>
 
-          {/* Free Shipping Message */}
-          <View className="mx-4 mb-6">
-            <Text className="text-white/60 text-[15px] font-poppins-medium text-center">
-              Your cart qualifies for free shipping
-            </Text>
-          </View>
 
-          {/* BW20 Code with Apply Button */}
+          <Text className="text-white/60 text-[15px] mx-4 mb-6 font-poppins-medium text-center">
+            Your cart qualifies for free shipping
+          </Text>
+
+
           <View className="mx-4 mb-6">
             <LinearGradient
               colors={['#191E29', '#242C3B']}
@@ -156,24 +147,25 @@ export default function Cart() {
               }}
             >
               <TextInput
-                value={promoCode} // bind state
-                onChangeText={setPromoCode} // update state
+                value={promoCode}
+                onChangeText={setPromoCode}
                 placeholder="Enter promo code"
                 placeholderTextColor="rgba(255,255,255,0.5)"
                 className="flex-1 px-4 py-6 text-white text-sm font-poppins-medium"
                 style={{ minHeight: 50 }}
               />
 
-              <TouchableOpacity
-                className="bg-blue-500 flex justify-center items-center px-4 py-6 w-[114px] rounded-lg"
+              <GradientButton
+                width={114}
+                height={55}
                 onPress={handleApply}
               >
                 <Text className="text-white text-sm font-poppins-medium">Apply</Text>
-              </TouchableOpacity>
+              </GradientButton>
+
             </LinearGradient>
           </View>
 
-          {/* Order Summary */}
           <View className="mx-4 mb-6 space-y-4">
             <View className="flex-row justify-between">
               <Text className="text-gray-400 text-[15px] font-poppins-normal">Subtotal:</Text>
@@ -192,7 +184,6 @@ export default function Cart() {
               <Text className="text-gray-300 text-[15px] font-poppins-normal">-30%</Text>
             </View>
 
-            {/* Separator line - optional, not visible in image but might be there */}
 
             <View className="flex-row justify-between pt-2">
               <Text className="text-gray-300 text-[16px] font-poppins-semibold">Total:</Text>
@@ -202,25 +193,18 @@ export default function Cart() {
             </View>
           </View>
 
-          {/* Checkout Button */}
           <SwipeButton
             onSwipeComplete={() => {
-              // Add a small delay for the animation to complete
               setTimeout(() => {
                 handleCheckout();
               }, 500);
             }}
           />
 
-          <View style={{ height: 50 }} />
+          <View style={{ height: 100 }} />
         </ScrollView>
 
-
       </KeyboardAvoidingView>
-
-
-
-      {/* Bottom Padding for Navigation */}
 
     </SafeAreaView>
   );

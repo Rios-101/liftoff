@@ -1,6 +1,9 @@
 import { images } from "@/constant";
 import { Ionicons } from "@expo/vector-icons";
+import MaskedView from "@react-native-masked-view/masked-view";
+import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
+import { useState } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
 
 interface BikeCardProps {
@@ -18,6 +21,14 @@ interface BikeCardProps {
 }
 
 export default function BikeCard({ product, index }: BikeCardProps) {
+
+  const [liked, setLiked] = useState(false);
+
+  const toggleLike = () => {
+    setLiked((prev) => !prev);
+  };
+
+
   const handleProductPress = () => {
     router.push(`/product/${product.id}`);
   };
@@ -31,7 +42,7 @@ export default function BikeCard({ product, index }: BikeCardProps) {
     >
       <TouchableOpacity
         className="relative"
-        style={{ height: 250 }}
+        style={{ height: index % 2 === 1 ? 230 : 250 }}
         onPress={handleProductPress}
       >
         {/* Background Image */}
@@ -41,14 +52,36 @@ export default function BikeCard({ product, index }: BikeCardProps) {
           resizeMode="stretch"
         />
 
+
+
         {/* Content Container */}
         <View className="relative p-5 h-full justify-between">
           {/* Top Section */}
           <View>
             {/* Heart Icon */}
-            <TouchableOpacity className="absolute top-0 right-0 z-10">
-              <Ionicons name="heart-outline" size={22} color="white" />
+            <TouchableOpacity
+              className="absolute top-0 right-0 z-10"
+              onPress={toggleLike}
+            >
+              {liked ? (
+                <MaskedView
+                  maskElement={
+                    <Ionicons name="heart-outline" size={24} color="white" />
+                  }
+                >
+                  <LinearGradient
+                    colors={["#34CAE8", "#4E49F2"]}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 1 }}
+                    style={{ width: 24, height: 24 }}
+                  />
+                </MaskedView>
+              ) : (
+                <Ionicons name="heart-outline" size={24} color="white" />
+              )}
             </TouchableOpacity>
+
+
           </View>
 
           {/* Middle Section - Product Image */}

@@ -35,6 +35,7 @@ export default function ProductImageCarousel({ productImage }: ProductImageCarou
               alignItems: "center",
               justifyContent: "center",
             }}
+            className="pb-8"
           >
             <Image
               source={img}
@@ -43,6 +44,7 @@ export default function ProductImageCarousel({ productImage }: ProductImageCarou
                 height: 250,
                 marginBottom: width * 0.1
               }}
+
               resizeMode="contain"
             />
           </View>
@@ -53,7 +55,7 @@ export default function ProductImageCarousel({ productImage }: ProductImageCarou
       <View
         style={{
           position: "absolute",
-          bottom: 30,
+          bottom: 50,
           left: 0,
           right: 0,
           flexDirection: "row",

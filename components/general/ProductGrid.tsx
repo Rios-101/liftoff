@@ -18,7 +18,7 @@ interface ProductGridProps {
 
 export default function ProductGrid({ products }: ProductGridProps) {
   return (
-    <View className="flex-row flex-wrap justify-between">
+    <View className="flex-row flex-wrap  justify-between">
       {products.map((product, index) => (
         <BikeCard
           key={product.id}
